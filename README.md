@@ -10,7 +10,7 @@ Scar Severity Prediction
 ## Usage
   
   
-      train
+      # train
       python train_clinical.py --ngpu 3 --epochs 100 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --seed 1177 --prefix clinical_checkpoint ./[path_to_dataset]
       python train_image.py --ngpu 3 --epochs 100 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --kfold 5 --prefix image_checkpoint ./[path_to_dataset]
       python train_combined.py --ngpu 3 --epochs 100 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --seed 1177 --kfold 5 --prefix combined_checkpoint ./[path_to_dataset]
