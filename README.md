@@ -14,15 +14,15 @@ Abstract:
   
   
       # train
-      python train_clinical.py --ngpu 3 --epochs 100 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --seed 1177 --prefix clinical_checkpoint ./data
-      python train_image.py --ngpu 3 --epochs 100 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --kfold 5 --att-type CBAM --prefix image_checkpoint ./data
-      python train_combined.py --ngpu 3 --epochs 100 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --seed 1177 --kfold 5 --att-type CBAM  --prefix combined_checkpoint ./data
+      python train_clinical.py --ngpu 3 --epochs 100 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --seed 1177 --prefix clinical_checkpoint ./data/clinical
+      python train_image.py --ngpu 3 --epochs 100 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --kfold 5 --att-type CBAM --prefix image_checkpoint ./data/image
+      python train_combined.py --ngpu 3 --epochs 100 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --seed 1177 --kfold 5 --att-type CBAM  --prefix combined_checkpoint ./data/combined
       
  
       # valid
-      python valid_clinical.py --ngpu 3 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --seed 1177 --prefix EVAL --resume $CHECKPOINT_PATH$ ./data
-      python valid_image.py --ngpu 3 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --att-type CBAM --prefix EVAL --resume $CHECKPOINT_PATH$ ./data
-      python valid_combined.py --ngpu 3 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --seed 1177 --att-type CBAM --prefix EVAL --resume $CHECKPOINT_PATH$ ./data
+      python valid_clinical.py --ngpu 3 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --seed 1177 --prefix EVAL --resume $CHECKPOINT_PATH$ ./data/clinical
+      python valid_image.py --ngpu 3 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --att-type CBAM --prefix EVAL --resume $CHECKPOINT_PATH$ ./data/image
+      python valid_combined.py --ngpu 3 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --seed 1177 --att-type CBAM --prefix EVAL --resume $CHECKPOINT_PATH$ ./data/combined
        
    
 ## Reference
