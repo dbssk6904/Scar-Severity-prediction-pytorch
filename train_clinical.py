@@ -55,8 +55,8 @@ def main():
     print(model)
 
     # Data loading code
-    train_df = pd.read_excel(args.data, '/THYROID_220911_Px_train_aug.xlsx', header=0)
-    val_df = pd.read_excel(args.data, '/THYROID_220911_Px_val.xlsx', header=0)
+    train_df = pd.read_excel(args.data, '/thyroid_220911_Px_train_aug.xlsx', header=0)
+    val_df = pd.read_excel(args.data, '/thyroid_220911_Px_val.xlsx', header=0)
 
     X_train = train_df.drop(['img_name', 'Cls'], axis=1)
     Y_train = train_df['Cls']

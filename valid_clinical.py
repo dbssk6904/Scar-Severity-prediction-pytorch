@@ -80,7 +80,7 @@ def main():
     cudnn.benchmark = True
 
     # Data loading code
-    test_df = pd.read_excel(args.data, '/THYROID_220911_Px_test.xlsx', header=0)
+    test_df = pd.read_excel(args.data, '/thyroid_220911_Px_test.xlsx', header=0)
 
     X_test = test_df.drop(['img_name', 'Cls'], axis=1)
     Y_test = test_df['Cls']
