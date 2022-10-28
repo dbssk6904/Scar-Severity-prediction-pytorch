@@ -5,12 +5,12 @@ Scar Severity Prediction
 Abstract: 
 
 
---------------------------
-### Requirement
+
+## Requirement
 - Windows10, 3*RTX A4000, PyTorch 1.9.0, CUDA 11.2 + CuDNN 8.1.0, Python 3.9   
 
    
-### Usage
+## Usage
   
   
       # train
@@ -26,6 +26,6 @@ Abstract:
        
   
 --------------------------   
-### Reference
+## Reference
 - **CBAM: Convolutional Block Attention Modul**
 - Link: https://github.com/Jongchan/attention-module
