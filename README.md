@@ -1,11 +1,12 @@
 Scar Severity Prediction
 ==========================
-
-![image](https://user-images.githubusercontent.com/79613225/198250477-3924fb57-d3cd-4432-a36d-8740f1da47b3.png)
+![image](https://user-images.githubusercontent.com/79613225/198456405-d08ebb30-443f-4cdd-b3ab-0fc68400c801.png)
+Abstract: 
 
 
 ### Requirement
 - Windows10, 3*RTX A4000, PyTorch 1.9.0, CUDA 11.2 + CuDNN 8.1.0, Python 3.9
+
 
 
 ### Usage
