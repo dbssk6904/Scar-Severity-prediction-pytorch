@@ -55,8 +55,8 @@ def main():
     print(model)
 
     # Data loading code
-    train_df = pd.read_excel(args.data, '/thyroid_220911_Px_train_aug.xlsx', header=0)
-    val_df = pd.read_excel(args.data, '/thyroid_220911_Px_val.xlsx', header=0)
+    train_df = pd.read_excel(args.data + '/thyroid_220911_Px_train_aug.xlsx', header=0)
+    val_df = pd.read_excel(args.data + '/thyroid_220911_Px_val.xlsx', header=0)
 
     X_train = train_df.drop(['img_name', 'Cls'], axis=1)
     Y_train = train_df['Cls']
@@ -96,6 +96,7 @@ def train(train_loader, model, criterion, optimizer, epoch):
     top1 = AverageMeter()
     top2 = AverageMeter()
 
+    end = time.time()
     for i, (inputs, target) in enumerate(train_loader):  # 무작위로 섞인 16개의 데이터가 담긴 배치가 하나씩 들어옴
         target = target.cuda()
         input_var = torch.autograd.Variable(inputs)
@@ -132,6 +133,7 @@ def validate(valid_loader, model, criterion, epoch):
 
     model.eval()
 
+    end = time.time()
     for i, (inputs, target) in enumerate(valid_loader):
         target = target.cuda()
         with torch.no_grad():
