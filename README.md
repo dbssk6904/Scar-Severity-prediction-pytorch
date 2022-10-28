@@ -24,8 +24,7 @@ Abstract:
       python valid_image.py --ngpu 3 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --att-type CBAM --prefix EVAL --resume $CHECKPOINT_PATH$ ./data
       python valid_combined.py --ngpu 3 --batch-size 16 --lr 0.01 --momentum 0.1 --weight-decay 1e-5 --seed 1177 --att-type CBAM --prefix EVAL --resume $CHECKPOINT_PATH$ ./data
        
-  
---------------------------   
+   
 ## Reference
 - **CBAM: Convolutional Block Attention Modul**
 - Link: https://github.com/Jongchan/attention-module
