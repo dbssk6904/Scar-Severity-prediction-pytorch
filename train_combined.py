@@ -66,40 +66,28 @@ def main():
     cudnn.benchmark = True
 
     # Data loading code
-    #train_img_dir = os.path.join(args.data, 'train')
-    #val_img_dir = os.path.join(args.data, 'val')
-    concat_img_dir = os.path.join(args.data, 'concat_all')
+    all_img_dir = os.path.join(args.data, 'concat_all')
 
     normalize = transforms.Normalize(mean=[0.5959581200688205, 0.46351973281645936, 0.4014567226013591],
                                      std=[0.07559669492871386, 0.0801965185805582, 0.08250758011366909])
 
     tf = transforms.Compose([transforms.Resize((224, 224)), transforms.ToTensor(), normalize])
 
-    #train_df = pd.read_excel(args.data + '/thyroid_220911_Px_train_aug.xlsx', header=0)
-    #val_df = pd.read_excel(args.data + '/thyroid_220911_Px_val.xlsx', header=0)
-    concat_df = pd.read_excel(args.data + '/thyroid_220911_Px_concatset.xlsx', header=0)
-
-    #train_dataset = CombineDataset(train_df, 'img_name', 'Cls', train_img_dir, transform=tf)
-    #val_dataset = CombineDataset(val_df, 'img_name', 'Cls', val_img_dir, transform=tf)
+    all_df = pd.read_excel(args.data + '/thyroid_220911_Px_concatset.xlsx', header=0)
 
     # Stratified k-fold cross-validation
-    #dataset = ConcatDataset([train_dataset, val_dataset])
-    #train_y = train_dataset.frame['Cls']
-    #valid_y = val_dataset.frame['Cls']
-    #Y = ConcatDataset([train_y, valid_y])
-    Y = concat_df['Cls']
+    Y = all_df['Cls']
 
     splits = StratifiedKFold(n_splits=args.kfold, shuffle=True, random_state=args.seed)
     scaler = StandardScaler()
     foldperf={}
 
-    for fold, (train_idx, val_idx) in enumerate(splits.split(np.arange(len(concat_df)), Y)):
-    #for fold, (train_idx, val_idx) in enumerate(splits.split(np.arange(len(dataset)), Y)):
+    for fold, (train_idx, val_idx) in enumerate(splits.split(np.arange(len(all_df)), Y)):
         print('** Fold {} **'.format(fold + 1))
 
-        scaled_train_df, scaled_valid_df = scaled_datasets(concat_df, train_idx, val_idx, scaler)
-        fold_train_dataset = CombineDataset(scaled_train_df, 'img_name', 'Cls', concat_img_dir, transform=tf)
-        fold_val_dataset = CombineDataset(scaled_valid_df, 'img_name', 'Cls', concat_img_dir, transform=tf)
+        scaled_train_df, scaled_valid_df = scaled_datasets(all_df, train_idx, val_idx, scaler)
+        fold_train_dataset = CombineDataset(scaled_train_df, 'img_name', 'Cls', all_img_dir, transform=tf)
+        fold_val_dataset = CombineDataset(scaled_valid_df, 'img_name', 'Cls', all_img_dir, transform=tf)
 
         train_loader = DataLoader(fold_train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers, pin_memory=True)
         val_loader = DataLoader(fold_val_dataset, batch_size=args.batch_size, shuffle=False, num_workers=args.workers, pin_memory=True)
