@@ -4,7 +4,8 @@ Scar Severity Prediction
 
 Abstract: 
 
-   
+
+--------------------------
 ### Requirement
 - Windows10, 3*RTX A4000, PyTorch 1.9.0, CUDA 11.2 + CuDNN 8.1.0, Python 3.9   
 
