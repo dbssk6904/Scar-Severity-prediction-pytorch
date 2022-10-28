@@ -27,13 +27,13 @@ from PIL import ImageFile
 
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
-parser = argparse.ArgumentParser(description='PyTorch Multi Input Layer model Training')
+parser = argparse.ArgumentParser(description='Combined-model Training')
 
 parser.add_argument('data', metavar='DIR', help='path to dataset')
 parser.add_argument('--depth', default=50, type=int, metavar='D', help='model depth')
 parser.add_argument('--ngpu', default=2, type=int, metavar='G', help='number of gpus to use')
 parser.add_argument('-j', '--workers', default=4, type=int, metavar='N', help='number of data loading workers (default: 4)')
-parser.add_argument('--epochs', default=90, type=int, metavar='N', help='number of total epochs to run')
+parser.add_argument('--epochs', default=100, type=int, metavar='N', help='number of total epochs to run')
 parser.add_argument('--start-epoch', default=0, type=int, metavar='N', help='manual epoch number (useful on restarts)')
 parser.add_argument('-b', '--batch-size', default=256, type=int, metavar='N', help='mini-batch size (default: 256)')
 parser.add_argument('--lr', '--learning-rate', default=0.1, type=float, metavar='LR', help='initial learning rate')
